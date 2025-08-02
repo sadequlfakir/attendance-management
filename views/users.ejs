@@ -1,0 +1,30 @@
+<div class="mb-4">
+  <a href="/users/new" class="bg-blue-500 text-white px-4 py-2 rounded"
+    >Add New User</a
+  >
+</div>
+
+<table class="table-auto w-full border">
+  <thead>
+    <tr class="bg-gray-200">
+      <th class="border px-4 py-2">Name</th>
+      <th class="border px-4 py-2">UID</th>
+      <th class="border px-4 py-2">Email</th>
+      <th class="border px-4 py-2">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.forEach(user => { %>
+    <tr>
+      <td class="border px-4 py-2"><%= user.name %></td>
+      <td class="border px-4 py-2"><%= user.uid %></td>
+      <td class="border px-4 py-2"><%= user.email || '-' %></td>
+      <td class="border px-4 py-2">
+        <a href="/users/<%= user.uid %>" class="text-blue-500 hover:underline"
+          >View</a
+        >
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>

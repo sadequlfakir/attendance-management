@@ -1,0 +1,31 @@
+<h2 class="text-xl font-bold mb-4">📅 Attendance Records</h2>
+
+<table class="w-full border-collapse border border-gray-300">
+  <thead class="bg-gray-200">
+    <tr>
+      <th class="border px-4 py-2 text-left">Name</th>
+      <th class="border px-4 py-2">UID</th>
+      <th class="border px-4 py-2">Date</th>
+      <th class="border px-4 py-2">Total Hours</th>
+      <th class="border px-4 py-2">Entries</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% logs.forEach(log => { %>
+    <tr class="bg-white border-b hover:bg-gray-50">
+      <td class="border px-4 py-2"><%= log.name %></td>
+      <td class="border px-4 py-2 text-center"><%= log.uid %></td>
+      <td class="border px-4 py-2 text-center"><%= log.date %></td>
+      <td class="border px-4 py-2 text-center"><%= log.totalHours %> hrs</td>
+      <td class="border px-4 py-2">
+        <% log.entries.forEach(entry => { %>
+        <div>
+          🟢 <%= entry.in ? new Date(entry.in).toLocaleTimeString() : '' %> — 🔴
+          <%= entry.out ? new Date(entry.out).toLocaleTimeString() : '...' %>
+        </div>
+        <% }) %>
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>

@@ -1,0 +1,39 @@
+<h2 class="text-xl font-bold mb-4">User: <%= user.name %></h2>
+
+<p><strong>UID:</strong> <%= user.uid %></p>
+<p><strong>Email:</strong> <%= user.email %></p>
+<p><strong>Role:</strong> <%= user.role %></p>
+<p><strong>Department:</strong> <%= user.department %></p>
+
+<a
+  href="/users/<%= user.uid %>/edit"
+  class="text-blue-500 underline mb-4 inline-block"
+  >✏️ Edit User</a
+>
+<h3 class="mt-6 font-semibold">Attendance Logs</h3>
+
+<table class="table-auto w-full border mt-2">
+  <thead>
+    <tr class="bg-gray-200">
+      <th class="border px-4 py-2">Date</th>
+      <th class="border px-4 py-2">Total Hours</th>
+      <th class="border px-4 py-2">Entries</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% logs.forEach(log => { %>
+    <tr>
+      <td class="border px-4 py-2"><%= log.date %></td>
+      <td class="border px-4 py-2"><%= log.totalHours %> hrs</td>
+      <td class="border px-4 py-2">
+        <% log.entries.forEach(entry => { %>
+        <div>
+          🟢 <%= entry.in ? new Date(entry.in).toLocaleTimeString() : '' %> - 🔴
+          <%= entry.out ? new Date(entry.out).toLocaleTimeString() : '' %>
+        </div>
+        <% }) %>
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>

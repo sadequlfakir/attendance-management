@@ -1,0 +1,57 @@
+<!-- views/edit-user.ejs -->
+<div class="max-w-xl mx-auto p-6 mt-8 bg-white shadow rounded">
+  <h2 class="text-xl font-bold mb-4">✏️ Edit User</h2>
+  <form
+    action="/users/<%= user.uid %>?_method=PUT"
+    method="POST"
+    class="space-y-4"
+  >
+    <div>
+      <label class="block mb-1 font-bold">UID</label>
+      <input
+        name="uid"
+        value="<%= user.uid %>"
+        class="w-full border p-2"
+        readonly
+      />
+    </div>
+    <div>
+      <label class="block mb-1 font-bold">Name</label>
+      <input
+        name="name"
+        value="<%= user.name %>"
+        class="w-full border p-2"
+        required
+      />
+    </div>
+    <div>
+      <label class="block mb-1 font-bold">Email</label>
+      <input
+        name="email"
+        type="email"
+        value="<%= user.email %>"
+        class="w-full border p-2"
+      />
+    </div>
+    <div>
+      <label class="block mb-1 font-bold">Role</label>
+      <input name="role" value="<%= user.role %>" class="w-full border p-2" />
+    </div>
+    <div>
+      <label class="block mb-1 font-bold">Department</label>
+      <input
+        name="department"
+        value="<%= user.department %>"
+        class="w-full border p-2"
+      />
+    </div>
+    <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded">
+      Update
+    </button>
+  </form>
+  <a
+    href="/users/<%= user.uid %>"
+    class="inline-block mt-4 text-gray-600 underline"
+    >← Back</a
+  >
+</div>
