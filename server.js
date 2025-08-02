@@ -19,7 +19,7 @@ app.use(expressLayouts);
 app.set('layout', 'layout');
 app.use(methodOverride('_method'));
 
-mongoose.connect('mongodb://localhost:27017/attendance');
+mongoose.connect(process.env.MONGODB_URI);
 
 const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
 
